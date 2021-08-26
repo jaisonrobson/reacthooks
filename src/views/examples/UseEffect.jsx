@@ -11,9 +11,12 @@ function calcFactorial(number) {
     return calcFactorial(n - 1) * n
 }
 
+const verificaValor = (valor) => valor % 2 === 0 ? "par" : "impar"
+
 const UseEffect = (props) => {
     const [number, setNumber] = useState(1)
     const [factorial, setFactorial] = useState(1)
+    const [status, setStatus] = useState("");
 
     useEffect(
         () => setFactorial(calcFactorial(number)),
@@ -25,6 +28,11 @@ const UseEffect = (props) => {
             if (factorial > 1000000) document.title = "Passou de 1 milhao"
         },
         [factorial]
+    )
+
+    useEffect(
+        () => setStatus(verificaValor(number)),
+        [number]
     )
 
     return (
@@ -50,7 +58,13 @@ const UseEffect = (props) => {
             </div>
 
             <SectionTitle title="Exercicio #02" />
-            <div className="center"></div>
+            <div className="center">
+                <div>
+                    <span className="text">Status: </span>
+
+                    <span className="text red">{status}</span>
+                </div>
+            </div>
         </div>
     )
 }
