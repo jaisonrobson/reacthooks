@@ -47,6 +47,8 @@ const UseMemo = (props) => {
                     value={n3}
                     onChange={(e) => setN3(parseInt(e.target.value))}
                 />
+
+                <span className="text">{result}</span>
             </div>
         </div>
     )
